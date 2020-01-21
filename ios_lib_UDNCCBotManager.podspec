@@ -11,7 +11,7 @@ s.requires_arc = true
 s.version = "0.0.1"
 
 # 3
-s.license = { :type => "MIT", :file => "LICENSE" }
+# s.license = { :type => "MIT", :file => "LICENSE" }
 
 # 4 - Replace with your name and e-mail address
 s.author = { "KevinLo" => "kevin.lo@udngroup.com" }
@@ -27,7 +27,7 @@ s.source = { :git => "https://github.com/IssueLo/ios_lib_UDNCCBotManager.git",
 s.framework = "UIKit", "WebKit"
 
 # 8
-s.source_files = "ios_lib_UDNCCBotManager/**/*.{swift}"
+s.source_files = "ios_lib_UDNCCBotManager/*.{swift}, ios_lib_UDNCCBotManager/Extension/*.{swift}"
 
 # 9
 # s.resources = "CCBotManager/**/*.{xcassets}"

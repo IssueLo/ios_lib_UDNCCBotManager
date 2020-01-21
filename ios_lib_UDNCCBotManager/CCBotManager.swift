@@ -34,13 +34,13 @@ public class CCBotManager {
         }
     }
     public static var imageBundle: Bundle {
-        let path = Bundle(for: CCBotManager.self).resourcePath! // + "CCBotManager.bundle"
+        let path = Bundle(for: CCBotManager.self).resourcePath! + "/CCBotManager.bundle"
         return Bundle(path: path)!
     }
         
     // MARK: Initializer
     /// Initializer CCBotManager with a `SuperViewController` and `CCBotCategory`
-    init(superViewController: UIViewController,
+    public init(superViewController: UIViewController,
          ccBotCategory: CCBotCategory) {
         
         self.superViewController = superViewController
