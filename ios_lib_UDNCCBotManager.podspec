@@ -8,7 +8,7 @@ s.summary = "ios_lib_UDNCCBotManager"
 s.requires_arc = true
 
 # 2
-s.version = "0.0.1"
+s.version = "0.0.2"
 
 # 3
 # s.license = { :type => "MIT", :file => "LICENSE" }
@@ -27,8 +27,7 @@ s.source = { :git => "https://github.com/IssueLo/ios_lib_UDNCCBotManager.git",
 s.framework = "UIKit", "WebKit"
 
 # 8
-s.source_files = "ios_lib_UDNCCBotManager/**/*.{swift}"
-#, ios_lib_UDNCCBotManager/Extension/*.{swift}"
+s.source_files = "ios_lib_UDNCCBotManager/*.{swift}, ios_lib_UDNCCBotManager/Extension/*.{swift}"
 
 # 9
 # s.resources = "CCBotManager/**/*.{xcassets}"
