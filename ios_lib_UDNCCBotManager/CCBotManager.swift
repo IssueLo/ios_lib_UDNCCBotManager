@@ -20,12 +20,12 @@ public class CCBotManager {
     ///   - isOpen: ChatBot Button control by `UISwitch`
     public var superViewController: UIViewController! {
         didSet {
-            setCCBotButton()
+            setCCBotManager(on: superViewController.view)
         }
     }
     public var ccBotCategory: CCBotCategory! {
         didSet {
-            setCCBotViewController()
+            setCCBotManager(with: ccBotCategory)
         }
     }
     public var isOpen: Bool = true {
@@ -53,35 +53,28 @@ public class CCBotManager {
     }
     
     // MARK: Method
-    /// Set CCBotViewController
-    private func setCCBotViewController() {
+    /// Set CCBotViewController `WebViewURL` and CCBotButton `UIImage`
+    private func setCCBotManager(with category: CCBotCategory) {
         
-        ccBotViewController.url = ccBotCategory.url
-        ccBotViewController.dismissHandler = {
-            UIView.animate(withDuration: 0.5) {
-                self.coverView.alpha = 0
-            }
-        }
+        ccBotButton.setImage(category.iconImage, for: .normal)
+        ccBotViewController.url = category.url
+        
     }
     
-    /// Set ChatBot Button `AutoLayout`, `UIImage` and `Target`
-    private func setCCBotButton() {
+    /// Set CCBotButton `AutoLayout` and `Target`
+    private func setCCBotManager(on superView: UIView) {
         
-        let superView = superViewController.view!
         superView.addSubview(ccBotButton)
-        
         ccBotButton.anchor(top: nil,
                            leading: nil,
                            bottom: superView.safeAreaLayoutGuide.bottomAnchor,
                            trailing: superView.trailingAnchor,
                            padding: UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0))
         
-        ccBotButton.setImage(CCBotCategory.utravel.iconImage, for: .normal)
-        
         ccBotButton.addTarget(self, action: #selector(presentCCBotVC), for: .touchUpInside)
     }
     
-    /// `ChatBot Button Target` - Present CCBotViewController
+    /// `ChatBot Button Target` - Present CCBotViewController, Animation of CoverView
     @objc
     private func presentCCBotVC() {
 
@@ -90,6 +83,11 @@ public class CCBotManager {
         coverView.alpha = 0
         UIView.animate(withDuration: 0.5) {
             self.coverView.alpha = 0.4
+        }
+        ccBotViewController.dismissHandler = {
+            UIView.animate(withDuration: 0.5) {
+                self.coverView.alpha = 0
+            }
         }
         
         ccBotViewController.modalPresentationStyle = .overCurrentContext
