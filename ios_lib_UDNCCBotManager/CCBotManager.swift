@@ -10,20 +10,24 @@ import UIKit
 
 public class CCBotManager {
     
-    // MARK: Properties
+    /// `Singleton Plus`
+    public static let shared = CCBotManager()
+    
+    // MARK: Public Properties
     /// - Parameters:
     ///   - superViewController: SuperView for ChatBot Button
     ///   - ccBotCategory: Project Category
-    ///   - ccBotButton: ChatBot Button of Screen, default is `UIButton()`
-    ///   - ccBotViewController: ViewController for WebView, default is `CCBotViewController()`
-    ///   - coverView: Create animation when ChatBot push up
     ///   - isOpen: ChatBot Button control by `UISwitch`
-    ///   - imageBundle: Path of `Bundle`
-    private var superViewController: UIViewController!
-    private var ccBotCategory: CCBotCategory!
-    private let ccBotButton: UIButton = UIButton()
-    private let ccBotViewController: CCBotViewController = CCBotViewController()
-    lazy var coverView: UIView = UIView(frame: superViewController.view.frame)
+    public var superViewController: UIViewController! {
+        didSet {
+            setCCBotButton()
+        }
+    }
+    public var ccBotCategory: CCBotCategory! {
+        didSet {
+            setCCBotViewController()
+        }
+    }
     public var isOpen: Bool = true {
         didSet {
             if isOpen {
@@ -33,21 +37,19 @@ public class CCBotManager {
             }
         }
     }
-    public static var imageBundle: Bundle {
+    
+    // MARK: Other Properties
+    /// - Parameters:
+    ///   - ccBotButton: ChatBot Button on the Screen, default is `UIButton()`
+    ///   - ccBotViewController: ViewController for WebView, default is `CCBotViewController()`
+    ///   - coverView: Create animation when present ChatBotView
+    ///   - imageBundle: Path of `Bundle`
+    private let ccBotButton: UIButton = UIButton()
+    private let ccBotViewController: CCBotViewController = CCBotViewController()
+    lazy var coverView: UIView = UIView(frame: superViewController.view.frame)
+    static var imageBundle: Bundle {
         let path = Bundle(for: CCBotManager.self).resourcePath! + "/CCBotManager.bundle"
         return Bundle(path: path)!
-    }
-        
-    // MARK: Initializer
-    /// Initializer CCBotManager with a `SuperViewController` and `CCBotCategory`
-    public init(superViewController: UIViewController,
-         ccBotCategory: CCBotCategory) {
-        
-        self.superViewController = superViewController
-        self.ccBotCategory = ccBotCategory
-        
-        setCCBotViewController()
-        setCCBotButton()
     }
     
     // MARK: Method
@@ -79,7 +81,7 @@ public class CCBotManager {
         ccBotButton.addTarget(self, action: #selector(presentCCBotVC), for: .touchUpInside)
     }
     
-    /// ChatBot Button Target - Present CCBotViewController
+    /// `ChatBot Button Target` - Present CCBotViewController
     @objc
     private func presentCCBotVC() {
 
