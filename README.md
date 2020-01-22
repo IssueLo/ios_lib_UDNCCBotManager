@@ -1,4 +1,4 @@
-# CCBotManager
+# ios_lib_UDNCCBotManager
 
 2019 年中旬，聯合報 App 提出了語音新聞的需求，意即使用微軟 Text-To-Speech 文字轉語音（TTS）技術，將新聞念出來。
 為了方便管理，便建立 TTSManager 來統一管理，讓經濟日報與聯合報都使用同一份程式碼。程式碼架構初始規劃[在此](https://docs.google.com/document/d/1k9i6DZBC5nQaL1daAMC3blU6RRhfyhZVQD-_4K3qaDo/edit)； iOS 跟 Android 在實作上一定會有差異，但整體架構應相去不遠。  
