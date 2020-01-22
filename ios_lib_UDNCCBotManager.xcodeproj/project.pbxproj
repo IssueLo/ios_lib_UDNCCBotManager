@@ -14,6 +14,8 @@
 		4084AB5423D6EC750013F2D0 /* CCBotCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4084AB5023D6EC750013F2D0 /* CCBotCategory.swift */; };
 		4084AB5523D6EC750013F2D0 /* CCBotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4084AB5223D6EC750013F2D0 /* CCBotViewController.swift */; };
 		4084AB5723D6ECF70013F2D0 /* CCBotAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4084AB5623D6ECF70013F2D0 /* CCBotAssets.xcassets */; };
+		4084AB7D23D848B50013F2D0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4084AB7C23D848B50013F2D0 /* README.md */; };
+		4084AB7F23D848BE0013F2D0 /* ios_lib_UDNCCBotManager.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 4084AB7E23D848BE0013F2D0 /* ios_lib_UDNCCBotManager.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		4084AB5023D6EC750013F2D0 /* CCBotCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCBotCategory.swift; sourceTree = "<group>"; };
 		4084AB5223D6EC750013F2D0 /* CCBotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCBotViewController.swift; sourceTree = "<group>"; };
 		4084AB5623D6ECF70013F2D0 /* CCBotAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CCBotAssets.xcassets; sourceTree = "<group>"; };
+		4084AB7C23D848B50013F2D0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4084AB7E23D848BE0013F2D0 /* ios_lib_UDNCCBotManager.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ios_lib_UDNCCBotManager.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +46,8 @@
 		4084AB3323D6EB650013F2D0 = {
 			isa = PBXGroup;
 			children = (
+				4084AB7E23D848BE0013F2D0 /* ios_lib_UDNCCBotManager.podspec */,
+				4084AB7C23D848B50013F2D0 /* README.md */,
 				4084AB3F23D6EB660013F2D0 /* ios_lib_UDNCCBotManager */,
 				4084AB3E23D6EB660013F2D0 /* Products */,
 			);
@@ -147,6 +153,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4084AB7D23D848B50013F2D0 /* README.md in Resources */,
+				4084AB7F23D848BE0013F2D0 /* ios_lib_UDNCCBotManager.podspec in Resources */,
 				4084AB5723D6ECF70013F2D0 /* CCBotAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
