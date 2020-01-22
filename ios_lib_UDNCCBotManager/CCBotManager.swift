@@ -24,7 +24,7 @@ public class CCBotManager {
     private let ccBotButton: UIButton = UIButton()
     private let ccBotViewController: CCBotViewController = CCBotViewController()
     lazy var coverView: UIView = UIView(frame: superViewController.view.frame)
-    public var isOpen: Bool = false {
+    public var isOpen: Bool = true {
         didSet {
             if isOpen {
                 ccBotButton.isHidden = false
