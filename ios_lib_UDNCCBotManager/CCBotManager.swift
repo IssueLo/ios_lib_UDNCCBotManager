@@ -46,18 +46,22 @@ public class CCBotManager {
         self.superViewController = superViewController
         self.ccBotCategory = ccBotCategory
         
-        superViewController.view.addSubview(coverView)
+        setCCBotViewController()
+        setCCBotButton()
+    }
+    
+    // MARK: Method
+    /// Set CCBotViewController
+    private func setCCBotViewController() {
+        
         ccBotViewController.url = ccBotCategory.url
         ccBotViewController.dismissHandler = {
             UIView.animate(withDuration: 0.5) {
                 self.coverView.alpha = 0
             }
         }
-        
-        setCCBotButton()
     }
     
-    // MARK: Method
     /// Set ChatBot Button `AutoLayout`, `UIImage` and `Target`
     private func setCCBotButton() {
         
@@ -79,6 +83,7 @@ public class CCBotManager {
     @objc
     private func presentCCBotVC() {
 
+        superViewController.view.addSubview(coverView)
         coverView.backgroundColor = .black
         coverView.alpha = 0
         UIView.animate(withDuration: 0.5) {
