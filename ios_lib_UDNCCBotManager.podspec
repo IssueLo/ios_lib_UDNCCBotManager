@@ -27,7 +27,7 @@ s.source = { :git => "https://github.com/IssueLo/ios_lib_UDNCCBotManager.git",
 s.framework = "UIKit", "WebKit"
 
 # 8
-s.source_files = "ios_lib_UDNCCBotManager/*"
+s.source_files = "ios_lib_UDNCCBotManager/**/*"
 # s.source_files = "ios_lib_UDNCCBotManager/*.{swift}","ios_lib_UDNCCBotManager/Extension"
 
 # 9
