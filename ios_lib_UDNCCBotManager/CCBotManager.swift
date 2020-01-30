@@ -13,22 +13,33 @@ public class CCBotManager {
     /// `Singleton Plus`
     public static let shared = CCBotManager()
     
-    // MARK: Public Properties
+    /// setting `CCBotManager`
     /// - Parameters:
     ///   - superViewController: SuperView for ChatBot Button
     ///   - ccBotCategory: Project Category
-    ///   - isOpen: ChatBot Button control by `UISwitch`
+    ///   - isOpen: ChatBot Button control with `UISwitch`, default is `true`
+    public func setting(superViewController: UIViewController,
+                        ccBotCategory: CCBotCategory,
+                        isOpen: Bool = true) {
+        
+        self.superViewController = superViewController
+        self.ccBotCategory = ccBotCategory
+        self.isOpen = isOpen
+        ccBotButton.addTarget(self, action: #selector(presentCCBotVC), for: .touchUpInside)
+    }
+    
+    // MARK: Main Properties
     public var superViewController: UIViewController! {
         didSet {
-            setCCBotManager(on: superViewController.view)
+            ccBotBtnLayout(on: superViewController.view)
         }
     }
     public var ccBotCategory: CCBotCategory! {
         didSet {
-            setCCBotManager(with: ccBotCategory)
+            ccBotSetting(with: ccBotCategory)
         }
     }
-    public var isOpen: Bool = true {
+    public var isOpen: Bool! {
         didSet {
             if isOpen {
                 ccBotButton.isHidden = false
@@ -43,31 +54,27 @@ public class CCBotManager {
     ///   - ccBotButton: ChatBot Button on the Screen, default is `UIButton()`
     ///   - ccBotViewController: ViewController for WebView, default is `CCBotViewController()`
     ///   - coverView: Create animation when present ChatBotView
-    ///   - imageBundle: Path of `Bundle`
     private let ccBotButton: UIButton = UIButton()
     private let ccBotViewController: CCBotViewController = CCBotViewController()
-    lazy var coverView: UIView = UIView(frame: superViewController.view.frame)
+    private let coverView: UIView = UIView()
     
     // MARK: Method
     /// Set CCBotViewController `WebViewURL` and CCBotButton `UIImage`
-    private func setCCBotManager(with category: CCBotCategory) {
+    private func ccBotSetting(with category: CCBotCategory) {
         
         ccBotButton.setImage(category.iconImage, for: .normal)
         ccBotViewController.url = category.url
-        
     }
     
-    /// Set CCBotButton `AutoLayout` and `Target`
-    private func setCCBotManager(on superView: UIView) {
-        
+    /// Set CCBotButton `AutoLayout`
+    private func ccBotBtnLayout(on superView: UIView) {
+                
         superView.addSubview(ccBotButton)
         ccBotButton.anchor(top: nil,
                            leading: nil,
                            bottom: superView.safeAreaLayoutGuide.bottomAnchor,
                            trailing: superView.trailingAnchor,
                            padding: UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0))
-        
-        ccBotButton.addTarget(self, action: #selector(presentCCBotVC), for: .touchUpInside)
     }
     
     /// `ChatBot Button Target` - Present CCBotViewController, Animation of CoverView
@@ -75,6 +82,7 @@ public class CCBotManager {
     private func presentCCBotVC() {
 
         superViewController.view.addSubview(coverView)
+        coverView.frame = superViewController.view.frame
         coverView.backgroundColor = .black
         coverView.alpha = 0
         UIView.animate(withDuration: 0.5) {

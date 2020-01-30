@@ -36,7 +36,7 @@ class CCBotViewController: UIViewController {
     // MARK: Method
     /// Set WebViewConfig with `CCBotWKScriptName` for receiving messages from JavaScript
     private func setWebViewConfig() {
-        
+
         webViewConfig.userContentController = WKUserContentController()
         webViewConfig.userContentController.add(self, name: CCBotModel.WKScriptName.close)
     }
@@ -47,7 +47,6 @@ class CCBotViewController: UIViewController {
         webView = WKWebView(frame: .zero, configuration: webViewConfig)
         webView.addCornerRadius(corners: [Corner.topLeft.mask, Corner.topRight.mask], radius: 8)
         webView.scrollView.bounces = false
-
         view.addSubview(webView)
 
         let layoutGuide = view.safeAreaLayoutGuide
@@ -70,7 +69,6 @@ extension CCBotViewController: WKScriptMessageHandler {
         let messageString = message.body as! String
         
         if messageString == "" {
-            
             dismissHandler?()
             self.dismiss(animated: true, completion: nil)
         }
