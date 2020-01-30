@@ -1,12 +1,13 @@
 # ios_lib_UDNCCBotManager
 
-2019 年中旬，聯合報 App 提出了語音新聞的需求，意即使用微軟 Text-To-Speech 文字轉語音（TTS）技術，將新聞念出來。
-為了方便管理，便建立 TTSManager 來統一管理，讓經濟日報與聯合報都使用同一份程式碼。程式碼架構初始規劃[在此](https://docs.google.com/document/d/1k9i6DZBC5nQaL1daAMC3blU6RRhfyhZVQD-_4K3qaDo/edit)； iOS 跟 Android 在實作上一定會有差異，但整體架構應相去不遠。  
-[後端文件](https://docs.google.com/document/d/1owbrmO8YbDsBf2Tmj4K5C2s9f8NeU9ctPKFhJZuk3tU/edit)
+
+聊天機器人（Chat Bot）原來由 Web 端開發，應用在有行旅 Web。
+此套件的目的為將 Web 端聊天機器人應用在 udnNews（or 其他 App） 的 iOS App 上。
+
 
 ## Installation
 
-To integrate TTSManager into your Xcode project using CocoaPods, specify it in your `Podfile`:
+To integrate ios_lib_UDNCCBotManager into your Xcode project using CocoaPods, specify it in your `Podfile`:
 ```ruby
 
 platform :ios, '9.0'
