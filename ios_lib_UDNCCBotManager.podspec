@@ -4,6 +4,7 @@ Pod::Spec.new do |s|
 s.platform = :ios
 s.ios.deployment_target = '12.0'
 s.name = "CCBotManager"
+s.module_name = 'CCBotManager'
 s.summary = "ios_lib_UDNCCBotManager"
 s.requires_arc = true
 
