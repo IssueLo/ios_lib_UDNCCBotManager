@@ -9,26 +9,28 @@
 import UIKit
 import WebKit
 
-public class CCBotViewController: UIViewController {
+class CCBotViewController: UIViewController {
     
     // MARK: Properties
     /// - Parameters:
-    ///   - webView:
-    ///   - webViewConfig:
-    ///   - url:
-    ///   - dismissHandle:
+    ///   - webView: `WKWebView`
+    ///   - webViewConfig: For receiving messages from JavaScript
+    ///   - url: URL of webView, set at `viewDidLoad`
+    ///   - dismissHandle: When `CCBotViewController` dismiss, background coverView alpha == 0
     private var webView: WKWebView!
     private let webViewConfig = WKWebViewConfiguration()
-    public var url: String = ""
+    var url: String!
     var dismissHandler: (() -> ())?
     
     // MARK: Life Cycle
-    public override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .clear
         setWebViewConfig()
-        setWebView(urlString: url)
+        if let url = url {
+            setWebView(urlString: url)
+        }
     }
     
     // MARK: Method
@@ -64,8 +66,13 @@ public class CCBotViewController: UIViewController {
 extension CCBotViewController: WKScriptMessageHandler {
     
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-         
-        dismissHandler?()
-        self.dismiss(animated: true, completion: nil)
+        
+        let messageString = message.body as! String
+        
+        if messageString == "" {
+            
+            dismissHandler?()
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
