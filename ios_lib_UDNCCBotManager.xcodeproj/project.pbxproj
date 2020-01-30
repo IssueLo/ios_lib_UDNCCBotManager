@@ -16,6 +16,7 @@
 		4084AB5723D6ECF70013F2D0 /* CCBotAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4084AB5623D6ECF70013F2D0 /* CCBotAssets.xcassets */; };
 		4084AB7D23D848B50013F2D0 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4084AB7C23D848B50013F2D0 /* README.md */; };
 		4084AB7F23D848BE0013F2D0 /* ios_lib_UDNCCBotManager.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 4084AB7E23D848BE0013F2D0 /* ios_lib_UDNCCBotManager.podspec */; };
+		40AC340223E2C1AD00846276 /* CCBotModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AC340123E2C1AD00846276 /* CCBotModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		4084AB5623D6ECF70013F2D0 /* CCBotAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CCBotAssets.xcassets; sourceTree = "<group>"; };
 		4084AB7C23D848B50013F2D0 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4084AB7E23D848BE0013F2D0 /* ios_lib_UDNCCBotManager.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ios_lib_UDNCCBotManager.podspec; sourceTree = "<group>"; };
+		40AC340123E2C1AD00846276 /* CCBotModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCBotModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				4084AB4E23D6EC750013F2D0 /* CCBotManager.swift */,
 				4084AB5223D6EC750013F2D0 /* CCBotViewController.swift */,
 				4084AB5023D6EC750013F2D0 /* CCBotCategory.swift */,
+				40AC340123E2C1AD00846276 /* CCBotModel.swift */,
 				4084AB4823D6EC660013F2D0 /* Extension */,
 				4084AB4023D6EB660013F2D0 /* ios_lib_UDNCCBotManager.h */,
 				4084AB4123D6EB660013F2D0 /* Info.plist */,
@@ -171,6 +174,7 @@
 				4084AB4C23D6EC660013F2D0 /* UIView+CornerRadius.swift in Sources */,
 				4084AB5323D6EC750013F2D0 /* CCBotManager.swift in Sources */,
 				4084AB5423D6EC750013F2D0 /* CCBotCategory.swift in Sources */,
+				40AC340223E2C1AD00846276 /* CCBotModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

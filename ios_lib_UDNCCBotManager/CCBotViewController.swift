@@ -38,7 +38,7 @@ class CCBotViewController: UIViewController {
     private func setWebViewConfig() {
         
         webViewConfig.userContentController = WKUserContentController()
-        webViewConfig.userContentController.add(self, name: CCBotWKScriptName.close)
+        webViewConfig.userContentController.add(self, name: CCBotModel.WKScriptName.close)
     }
     
     /// Set WebView with  `WKWebViewConfiguration`, `CornerRadius`, `AutoLayout`and `URL`
@@ -55,7 +55,7 @@ class CCBotViewController: UIViewController {
                        leading: layoutGuide.leadingAnchor,
                        bottom: view.bottomAnchor,
                        trailing: layoutGuide.trailingAnchor,
-                       padding: UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0))
+                       padding: UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0))
 
         if let url = URL(string: url) {
             self.webView.load(URLRequest(url: url))

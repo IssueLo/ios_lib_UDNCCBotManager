@@ -47,10 +47,6 @@ public class CCBotManager {
     private let ccBotButton: UIButton = UIButton()
     private let ccBotViewController: CCBotViewController = CCBotViewController()
     lazy var coverView: UIView = UIView(frame: superViewController.view.frame)
-    static var imageBundle: Bundle {
-        let path = Bundle(for: CCBotManager.self).resourcePath! + "/CCBotManager.bundle"
-        return Bundle(path: path)!
-    }
     
     // MARK: Method
     /// Set CCBotViewController `WebViewURL` and CCBotButton `UIImage`

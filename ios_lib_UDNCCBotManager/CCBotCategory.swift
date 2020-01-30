@@ -8,35 +8,34 @@
 
 import UIKit
 
-public enum CCBotCategory: String {
+public enum CCBotCategory {
         
-    case utravel = "utravel"
+    case udnNews
+    case utravel
     
-    var iconImage: UIImage? {
+    private var model: CCBotCategoryModel {
         switch self {
-        case .utravel: return UIImage(named: "chatbot_head", in: CCBotManager.imageBundle, compatibleWith: nil)
+        case .udnNews: return CCBotCategoryModel(category: "udn", image: "chatbot_head")
+        case .utravel: return CCBotCategoryModel(category: "utravel", image: "chatbot_head")
         }
     }
     
     var url: String {
-        switch self {
-        case .utravel: return CCBotURLModel.getURL(with: self)
-        }
+        CCBotModel.getURL(with: self.model.category)
     }
     
-    private struct CCBotURLModel {
-        
-        static let path = "https:ccbot-testfront.udn-device-dept.net/#/"
-        static let platform = "?app=true"
-        
-        static func getURL(with ccBotCategory: CCBotCategory) -> String {
-            let url = path + ccBotCategory.rawValue + platform
-            return url
-        }
+    var iconImage: UIImage? {
+        UIImage(named: self.model.image, in: CCBotModel.imageBundle, compatibleWith: nil)
     }
 }
 
-public struct CCBotWKScriptName {
+struct CCBotCategoryModel {
     
-    public static let close = "botclosed"
+    let category: String
+    let image: String
+    
+    init(category: String, image: String) {
+        self.category = category
+        self.image = image
+    }
 }
