@@ -70,9 +70,18 @@ public class CCBotManager {
     private func ccBotBtnLayout(on superView: UIView) {
                 
         superView.addSubview(ccBotButton)
+        
+        var superViewBottomAnchor: NSLayoutYAxisAnchor?
+        
+        if #available(iOS 11.0, *) {
+            superViewBottomAnchor = superView.safeAreaLayoutGuide.bottomAnchor
+        } else {
+            superViewBottomAnchor = superView.bottomAnchor
+        }
+        
         ccBotButton.anchor(top: nil,
                            leading: nil,
-                           bottom: superView.safeAreaLayoutGuide.bottomAnchor,
+                           bottom: superViewBottomAnchor,
                            trailing: superView.trailingAnchor,
                            padding: UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0))
     }

@@ -10,12 +10,25 @@ import UIKit
 
 extension UIView {
     
-    /// CornerRadius Method
+    /// CornerRadius Method for iOS 11+
+    @available(iOS 11.0, *)
     func addCornerRadius(corners: CACornerMask, radius: CGFloat) {
         
         self.clipsToBounds = true
         self.layer.cornerRadius = radius
         self.layer.maskedCorners = corners
+    }
+    
+    /// CornerRadius Method for iOS 9 / 10
+    func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: self.bounds,
+                                byRoundingCorners: corners,
+                                cornerRadii: CGSize(width: radius, height: radius))
+     
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = self.bounds
+        maskLayer.path = path.cgPath
+        self.layer.mask = maskLayer
     }
 }
 

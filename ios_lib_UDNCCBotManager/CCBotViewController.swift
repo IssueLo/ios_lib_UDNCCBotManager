@@ -33,6 +33,11 @@ class CCBotViewController: UIViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+
+        webView.roundCorners(corners: [.topLeft, .topRight], radius: 8)
+    }
+    
     // MARK: Method
     /// Set WebViewConfig with `CCBotWKScriptName` for receiving messages from JavaScript
     private func setWebViewConfig() {
@@ -45,15 +50,21 @@ class CCBotViewController: UIViewController {
     private func setWebView(urlString: String) {
         
         webView = WKWebView(frame: .zero, configuration: webViewConfig)
-        webView.addCornerRadius(corners: [Corner.topLeft.mask, Corner.topRight.mask], radius: 8)
         webView.scrollView.bounces = false
         view.addSubview(webView)
-
-        let layoutGuide = view.safeAreaLayoutGuide
-        webView.anchor(top: view.topAnchor,
-                       leading: layoutGuide.leadingAnchor,
+        
+        var superViewTopAnchor: NSLayoutYAxisAnchor?
+        
+        if #available(iOS 11.0, *) {
+            superViewTopAnchor = view.safeAreaLayoutGuide.topAnchor
+        } else {
+            superViewTopAnchor = view.bottomAnchor
+        }
+        
+        webView.anchor(top: superViewTopAnchor,
+                       leading: view.leadingAnchor,
                        bottom: view.bottomAnchor,
-                       trailing: layoutGuide.trailingAnchor,
+                       trailing: view.trailingAnchor,
                        padding: UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0))
 
         if let url = URL(string: url) {

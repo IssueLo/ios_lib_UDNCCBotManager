@@ -2,14 +2,14 @@ Pod::Spec.new do |s|
 
 # 1
 s.platform = :ios
-s.ios.deployment_target = '12.0'
+s.ios.deployment_target = '9.0'
 s.name = "CCBotManager"
 s.module_name = 'CCBotManager'
-s.summary = "ios_lib_UDNCCBotManager"
+s.summary = "ChatBot Module for udnNews"
 s.requires_arc = true
 
 # 2
-s.version = "0.1.2"
+s.version = "0.1.3"
 
 # 3
 # s.license = { :type => "MIT", :file => "LICENSE" }
