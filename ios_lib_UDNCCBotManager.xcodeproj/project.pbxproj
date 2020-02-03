@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4051650023E7FA32009714CA /* UIViewController+SafeAreaLayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405164FF23E7FA32009714CA /* UIViewController+SafeAreaLayoutGuide.swift */; };
 		4084AB4223D6EB660013F2D0 /* ios_lib_UDNCCBotManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4084AB4023D6EB660013F2D0 /* ios_lib_UDNCCBotManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		4084AB4B23D6EC660013F2D0 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4084AB4923D6EC660013F2D0 /* UIView+AutoLayout.swift */; };
 		4084AB4C23D6EC660013F2D0 /* UIView+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4084AB4A23D6EC660013F2D0 /* UIView+CornerRadius.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		405164FF23E7FA32009714CA /* UIViewController+SafeAreaLayoutGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SafeAreaLayoutGuide.swift"; sourceTree = "<group>"; };
 		4084AB3D23D6EB660013F2D0 /* ios_lib_UDNCCBotManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ios_lib_UDNCCBotManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4084AB4023D6EB660013F2D0 /* ios_lib_UDNCCBotManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ios_lib_UDNCCBotManager.h; sourceTree = "<group>"; };
 		4084AB4123D6EB660013F2D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 			children = (
 				4084AB4923D6EC660013F2D0 /* UIView+AutoLayout.swift */,
 				4084AB4A23D6EC660013F2D0 /* UIView+CornerRadius.swift */,
+				405164FF23E7FA32009714CA /* UIViewController+SafeAreaLayoutGuide.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 				4084AB5523D6EC750013F2D0 /* CCBotViewController.swift in Sources */,
 				4084AB4B23D6EC660013F2D0 /* UIView+AutoLayout.swift in Sources */,
 				4084AB4C23D6EC660013F2D0 /* UIView+CornerRadius.swift in Sources */,
+				4051650023E7FA32009714CA /* UIViewController+SafeAreaLayoutGuide.swift in Sources */,
 				4084AB5323D6EC750013F2D0 /* CCBotManager.swift in Sources */,
 				4084AB5423D6EC750013F2D0 /* CCBotCategory.swift in Sources */,
 				40AC340223E2C1AD00846276 /* CCBotModel.swift in Sources */,

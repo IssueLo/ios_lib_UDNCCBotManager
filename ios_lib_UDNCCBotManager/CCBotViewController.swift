@@ -51,17 +51,9 @@ class CCBotViewController: UIViewController {
         
         webView = WKWebView(frame: .zero, configuration: webViewConfig)
         webView.scrollView.bounces = false
+        
         view.addSubview(webView)
-        
-        var superViewTopAnchor: NSLayoutYAxisAnchor?
-        
-        if #available(iOS 11.0, *) {
-            superViewTopAnchor = view.safeAreaLayoutGuide.topAnchor
-        } else {
-            superViewTopAnchor = view.bottomAnchor
-        }
-        
-        webView.anchor(top: superViewTopAnchor,
+        webView.anchor(top: ft_safeAreaLayoutGuide.topAnchor,
                        leading: view.leadingAnchor,
                        bottom: view.bottomAnchor,
                        trailing: view.trailingAnchor,

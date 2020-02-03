@@ -31,7 +31,7 @@ public class CCBotManager {
     // MARK: Main Properties
     public var superViewController: UIViewController! {
         didSet {
-            ccBotBtnLayout(on: superViewController.view)
+            ccBotBtnLayout(on: superViewController)
         }
     }
     public var ccBotCategory: CCBotCategory! {
@@ -67,22 +67,13 @@ public class CCBotManager {
     }
     
     /// Set CCBotButton `AutoLayout`
-    private func ccBotBtnLayout(on superView: UIView) {
+    private func ccBotBtnLayout(on superViewController: UIViewController) {
                 
-        superView.addSubview(ccBotButton)
-        
-        var superViewBottomAnchor: NSLayoutYAxisAnchor?
-        
-        if #available(iOS 11.0, *) {
-            superViewBottomAnchor = superView.safeAreaLayoutGuide.bottomAnchor
-        } else {
-            superViewBottomAnchor = superView.bottomAnchor
-        }
-        
+        superViewController.view.addSubview(ccBotButton)
         ccBotButton.anchor(top: nil,
                            leading: nil,
-                           bottom: superViewBottomAnchor,
-                           trailing: superView.trailingAnchor,
+                           bottom: superViewController.ft_safeAreaLayoutGuide.bottomAnchor,
+                           trailing: superViewController.view.trailingAnchor,
                            padding: UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0))
     }
     
