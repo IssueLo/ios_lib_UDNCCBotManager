@@ -24,18 +24,18 @@ $ pod install
 
 ## Reqirements
 
-iOS 9.0 and XCode 11.3 or higher since the framework is compiled with Swift 5.0 \n
-It's compatible with Swift 5.0
+iOS 9.0 and XCode 11.3 or higher since the framework is compiled with Swift 5.0.
+It's compatible with Swift 5.0.
 
 
 ## Set Up
 
-In your ViewController, create your global `ccBotManager`.\n 
-`superViewController`: SuperView for ChatBot Button\n
-`button`: ChatBot Button on the Screen\n
-`ccBotCategory`: Project Category\n
-`isOpen`: ChatBot Button control with `UISwitch`, default is `true`\n
-`delegate`: Delegate of `CCBotViewController`, default is `nil`\n
+In your ViewController, create your global `ccBotManager`.
+`superViewController`: SuperView for ChatBot Button.
+`button`: ChatBot Button on the Screen.
+`ccBotCategory`: Project Category.
+`isOpen`: ChatBot Button control with `UISwitch`, default is `true`.
+`delegate`: Delegate of `CCBotViewController`, default is `nil`.
 ```swift
 import CCBotManager
 
