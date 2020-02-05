@@ -26,6 +26,12 @@ public class CCBotManager {
         self.ccBotCategory = ccBotCategory
         self.isOpen = isOpen
         ccBotButton.addTarget(self, action: #selector(presentCCBotVC), for: .touchUpInside)
+        
+        if ccBotCategory == .udnNews {
+            delegate = newsDelegate
+        } else if ccBotCategory == .utravel {
+            delegate = travelDelegate
+        }
     }
     
     // MARK: Main Properties
@@ -48,7 +54,16 @@ public class CCBotManager {
             }
         }
     }
-    
+    public weak var delegate: AnyObject? {
+        didSet {
+            if ccBotCategory == .udnNews {
+                newsDelegate = delegate as? CCBotNewsDelegate
+            } else if ccBotCategory == .utravel {
+                travelDelegate = delegate as? CCBotTravelDelegate
+            }
+        }
+    }
+
     // MARK: Other Properties
     /// - Parameters:
     ///   - ccBotButton: ChatBot Button on the Screen, default is `UIButton()`
@@ -57,6 +72,16 @@ public class CCBotManager {
     private let ccBotButton: UIButton = UIButton()
     private let ccBotViewController: CCBotViewController = CCBotViewController()
     private let coverView: UIView = UIView()
+    private weak var newsDelegate: CCBotNewsDelegate? {
+        didSet {
+            ccBotViewController.newsDelegate = newsDelegate
+        }
+    }
+    private weak var travelDelegate: CCBotTravelDelegate? {
+        didSet {
+            ccBotViewController.travelDelegate = travelDelegate
+        }
+    }
     
     // MARK: Method
     /// Set CCBotViewController `WebViewURL` and CCBotButton `UIImage`

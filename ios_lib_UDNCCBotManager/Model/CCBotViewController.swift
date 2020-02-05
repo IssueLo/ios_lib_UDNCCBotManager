@@ -9,6 +9,16 @@
 import UIKit
 import WebKit
 
+public protocol CCBotNewsDelegate: AnyObject {
+    
+    func showNextNews(categaryID: Int, storyID: Int)
+}
+
+public protocol CCBotTravelDelegate: AnyObject {
+    
+    func showNextTour(categaryID: Int, storyID: Int)
+}
+
 class CCBotViewController: UIViewController {
     
     // MARK: Properties
@@ -17,10 +27,14 @@ class CCBotViewController: UIViewController {
     ///   - webViewConfig: For receiving messages from JavaScript
     ///   - url: URL of webView, set at `viewDidLoad`
     ///   - dismissHandle: When `CCBotViewController` dismiss, background coverView alpha == 0
+    ///   - newsDelegate: `CCBotUDNNewsDelegate`
+    ///   - travelDelegate: `CCBotTravelDelegate`
     private var webView: WKWebView!
     private let webViewConfig = WKWebViewConfiguration()
     var url: String!
     var dismissHandler: (() -> ())?
+    weak var newsDelegate: CCBotNewsDelegate?
+    weak var travelDelegate: CCBotTravelDelegate?
     
     // MARK: Life Cycle
     override func viewDidLoad() {
@@ -74,6 +88,9 @@ extension CCBotViewController: WKScriptMessageHandler {
         if messageString == "" {
             dismissHandler?()
             self.dismiss(animated: true, completion: nil)
+            // TODO - 
+            newsDelegate?.showNextNews(categaryID: 123, storyID: 456)
+            travelDelegate?.showNextTour(categaryID: 444, storyID: 555)
         }
     }
 }

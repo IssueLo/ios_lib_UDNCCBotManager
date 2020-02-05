@@ -47,6 +47,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		405BB9F123EA671100C19470 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4084AB5223D6EC750013F2D0 /* CCBotViewController.swift */,
+				4084AB5023D6EC750013F2D0 /* CCBotCategory.swift */,
+				40AC340123E2C1AD00846276 /* CCBotModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4084AB3323D6EB650013F2D0 = {
 			isa = PBXGroup;
 			children = (
@@ -69,9 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				4084AB4E23D6EC750013F2D0 /* CCBotManager.swift */,
-				4084AB5223D6EC750013F2D0 /* CCBotViewController.swift */,
-				4084AB5023D6EC750013F2D0 /* CCBotCategory.swift */,
-				40AC340123E2C1AD00846276 /* CCBotModel.swift */,
+				405BB9F123EA671100C19470 /* Model */,
 				4084AB4823D6EC660013F2D0 /* Extension */,
 				4084AB4023D6EB660013F2D0 /* ios_lib_UDNCCBotManager.h */,
 				4084AB4123D6EB660013F2D0 /* Info.plist */,
