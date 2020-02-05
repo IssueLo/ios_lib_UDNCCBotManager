@@ -16,28 +16,29 @@ public class CCBotManager {
     /// setting `CCBotManager`
     /// - Parameters:
     ///   - superViewController: SuperView for ChatBot Button
+    ///   - button: ChatBot Button on the Screen
     ///   - ccBotCategory: Project Category
     ///   - isOpen: ChatBot Button control with `UISwitch`, default is `true`
+    ///   - delegate: Delegate of `CCBotViewController`, default is `nil`
     public func setting(superViewController: UIViewController,
+                        button: UIButton,
                         ccBotCategory: CCBotCategory,
-                        isOpen: Bool = true) {
+                        isOpen: Bool = true,
+                        delegate: AnyObject? = nil) {
         
         self.superViewController = superViewController
+        self.ccBotButton = button
         self.ccBotCategory = ccBotCategory
         self.isOpen = isOpen
+        self.delegate = delegate
         ccBotButton.addTarget(self, action: #selector(presentCCBotVC), for: .touchUpInside)
-        
-        if ccBotCategory == .udnNews {
-            delegate = newsDelegate
-        } else if ccBotCategory == .utravel {
-            delegate = travelDelegate
-        }
     }
     
     // MARK: Main Properties
-    public var superViewController: UIViewController! {
+    public var superViewController: UIViewController!
+    public var ccBotButton: UIButton! {
         didSet {
-            ccBotBtnLayout(on: superViewController)
+            ccBotButton.addTarget(self, action: #selector(presentCCBotVC), for: .touchUpInside)
         }
     }
     public var ccBotCategory: CCBotCategory! {
@@ -66,10 +67,8 @@ public class CCBotManager {
 
     // MARK: Other Properties
     /// - Parameters:
-    ///   - ccBotButton: ChatBot Button on the Screen, default is `UIButton()`
     ///   - ccBotViewController: ViewController for WebView, default is `CCBotViewController()`
     ///   - coverView: Create animation when present ChatBotView
-    private let ccBotButton: UIButton = UIButton()
     private let ccBotViewController: CCBotViewController = CCBotViewController()
     private let coverView: UIView = UIView()
     private weak var newsDelegate: CCBotNewsDelegate? {

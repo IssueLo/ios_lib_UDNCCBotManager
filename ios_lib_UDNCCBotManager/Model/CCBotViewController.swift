@@ -73,7 +73,7 @@ class CCBotViewController: UIViewController {
                        trailing: view.trailingAnchor,
                        padding: UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0))
 
-        if let url = URL(string: url) {
+        if let url = URL(string: urlString) {
             self.webView.load(URLRequest(url: url))
         }
     }

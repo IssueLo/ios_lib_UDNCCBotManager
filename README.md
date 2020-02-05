@@ -68,6 +68,9 @@ ccBotSwitch.setOn(ccBotManager.isOpen, animated: true)
 }
 ```
 
+### Delegate
+
+
 
 ## Release
 1.0.0:
