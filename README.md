@@ -1,4 +1,4 @@
-# ios_lib_UDNCCBotManager
+# CCBotManager
 
 聊天機器人（Chat Bot）原來由 Web 端開發，應用在有行旅 Web。
 此套件的目的為將 Web 端聊天機器人應用在 udnNews（or 其他 App） 的 iOS App 上。
@@ -23,15 +23,19 @@ $ pod install
 
 
 ## Reqirements
-// to do
-iOS 9.0 and XCode 10.2 or higher since the framework is compiled with Swift 5.
+
+iOS 9.0 and XCode 11.3 or higher since the framework is compiled with Swift 5.0
 It's compatible with Swift 5.0
 
 
 ## Set Up
 
 In your ViewController, create your global `ccBotManager`. 
-Setting with `superViewController` and `ccBotCategory`:
+`superViewController`: SuperView for ChatBot Button
+`button`: ChatBot Button on the Screen
+`ccBotCategory`: Project Category
+`isOpen`: ChatBot Button control with `UISwitch`, default is `true`
+`delegate`: Delegate of `CCBotViewController`, default is `nil`
 ```swift
 import CCBotManager
 
@@ -39,10 +43,16 @@ let ccBotManager = CCBotManager.shared
 
 class ViewController: UIViewController {
 
+  @IBOutlet weak var ccBotButton: UIButton!
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    ccBotManager.setting(superViewController: self, ccBotCategory: .udnNews)
+    ccBotManager.setting(superViewController: self,
+                         button: ccBotButton,
+                         ccBotCategory: .utravel,
+                         isOpen: Bool = true,
+                         delegate: self)
   }
 }
 ```
@@ -70,12 +80,33 @@ ccBotSwitch.setOn(ccBotManager.isOpen, animated: true)
 
 ### Delegate
 
+Skip this step if already assigned at beginning:
+```swift
+ccBotManager.delegate = self
+
+```
+Confirm protocol of Delegate :
+```swift
+extension ViewController: CCBotNewsDelegate {
+    
+    func showNextNews(categaryID: Int, storyID: Int) {
+        print("categaryID: \(categaryID)\nstoryID: \(storyID)")
+    }
+}
+
+extension ViewController: CCBotTravelDelegate {
+    
+    func showNextTour(categaryID: Int, storyID: Int) {
+        print("categaryID: \(categaryID)\nstoryID: \(storyID)")
+    }
+}
+```
 
 
 ## Release
 1.0.0:
 - Deployment Target: iOS 9.0
-- Features: Download and play with news TTS mp3 files.
+- Features: Create ChatBot for App.
 
 
 ## License
