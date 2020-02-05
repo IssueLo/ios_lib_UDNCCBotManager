@@ -30,6 +30,10 @@ s.framework = "UIKit", "WebKit"
 # 8
 s.source_files = "ios_lib_UDNCCBotManager/*.swift"
 
+    s.subspec 'Model' do |m|
+        m.source_files = "ios_lib_UDNCCBotManager/Model/*.swift"
+    end
+
     s.subspec 'Extension' do |e|
         e.source_files = "ios_lib_UDNCCBotManager/Extension/*.swift"
     end
