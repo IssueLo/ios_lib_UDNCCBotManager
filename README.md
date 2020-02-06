@@ -6,7 +6,7 @@
 
 ## Installation
 
-To integrate `CCBotManager` into your Xcode project using CocoaPods, specify it in your `Podfile`:
+- To integrate `CCBotManager` into your Xcode project using CocoaPods, specify it in your `Podfile`:
 ```ruby
 
 platform :ios, '9.0'
@@ -16,7 +16,7 @@ target '<Your Target Name>' do
     pod 'CCBotManager', :git => 'ssh://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/ios_lib_TTSManager', :tag => '版本號'
 end
 ```
-Then, run the following command:
+- Then, run the following command:
 ```
 $ pod install
 ```
@@ -25,18 +25,17 @@ $ pod install
 ## Reqirements
 
 iOS 9.0 and XCode 11.3 or higher since the framework is compiled with Swift 5.0.
-It's compatible with Swift 5.0.
 
 
 ## Set Up
 
-In your ViewController, create your global `ccBotManager`.
-`superViewController`: SuperView for ChatBot Button.
-`button`: ChatBot Button on the Screen.
-`ccBotCategory`: Project Category.
-`environment`: Choose `test` or `release`
-`isOpen`: ChatBot Button control with `UISwitch`, default is `true`.
-`delegate`: Delegate of `CCBotViewController`, default is `nil`.
+- In your ViewController, create your global `ccBotManager`.
+- `superViewController`: SuperView for ChatBot Button.
+- `button`: ChatBot Button on the Screen.
+- `ccBotCategory`: Project Category.
+- `environment`: Choose `test` or `release`
+- `isOpen`: ChatBot Button control with `UISwitch`, default is `true`.
+- `delegate`: Delegate of `CCBotViewController`, default is `nil`.
 ```swift
 import CCBotManager
 
@@ -64,7 +63,7 @@ class ViewController: UIViewController {
 
 ### UISwitch of CCBotButton
 
-Create a `UISwitch`, setOn with `ccBotManager.isOpen`:
+- Create a `UISwitch`, setOn with `ccBotManager.isOpen`:
 ```swift
 @IBOutlet weak var ccBotSwitch: UISwitch!
 
@@ -82,12 +81,12 @@ ccBotSwitch.setOn(ccBotManager.isOpen, animated: true)
 
 ### Delegate
 
-Skip this step if already assigned at beginning:
+- Skip this step if already assigned at beginning:
 ```swift
 ccBotManager.delegate = self
 
 ```
-Confirm protocol of delegates :
+- Confirm protocol of delegates :
 ```swift
 extension ViewController: CCBotNewsDelegate {
     
