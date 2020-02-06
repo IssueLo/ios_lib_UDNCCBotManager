@@ -7,19 +7,19 @@
 ## Installation
 
 - To integrate `CCBotManager` into your Xcode project using CocoaPods, specify it in your `Podfile`:
-```ruby
+    ```ruby
 
-platform :ios, '9.0'
-use_frameworks!
+    platform :ios, '9.0'
+    use_frameworks!
 
-target '<Your Target Name>' do
-    pod 'CCBotManager', :git => 'ssh://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/ios_lib_TTSManager', :tag => '版本號'
-end
-```
+    target '<Your Target Name>' do
+        pod 'CCBotManager', :git => 'ssh://git-codecommit.ap-northeast-1.amazonaws.com/v1/repos/ios_lib_TTSManager', :tag => '版本號'
+    end
+    ```
 - Then, run the following command:
-```
-$ pod install
-```
+    ```
+    $ pod install
+    ```
 
 
 ## Reqirements
@@ -29,34 +29,34 @@ iOS 9.0 and XCode 11.3 or higher since the framework is compiled with Swift 5.0.
 
 ## Set Up
 
-- In your ViewController, create your global `ccBotManager`.
+In your ViewController, create your global `ccBotManager`.
 - `superViewController`: SuperView for ChatBot Button.
 - `button`: ChatBot Button on the Screen.
 - `ccBotCategory`: Project Category.
 - `environment`: Choose `test` or `release`
 - `isOpen`: ChatBot Button control with `UISwitch`, default is `true`.
 - `delegate`: Delegate of `CCBotViewController`, default is `nil`.
-```swift
-import CCBotManager
+    ```swift
+    import CCBotManager
 
-let ccBotManager = CCBotManager.shared
+    let ccBotManager = CCBotManager.shared
 
-class ViewController: UIViewController {
+    class ViewController: UIViewController {
 
-  @IBOutlet weak var ccBotButton: UIButton!
+      @IBOutlet weak var ccBotButton: UIButton!
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
+      override func viewDidLoad() {
+        super.viewDidLoad()
 
-    ccBotManager.setting(superViewController: self,
-                         button: ccBotButton,
-                         ccBotCategory: .utravel,
-                         environment: CCBotEnvironment,
-                         isOpen: Bool = true,
-                         delegate: self)
-  }
-}
-```
+        ccBotManager.setting(superViewController: self,
+                             button: ccBotButton,
+                             ccBotCategory: .utravel,
+                             environment: CCBotEnvironment,
+                             isOpen: Bool = true,
+                             delegate: self)
+      }
+    }
+    ```
 
 
 ## Usage
@@ -64,44 +64,43 @@ class ViewController: UIViewController {
 ### UISwitch of CCBotButton
 
 - Create a `UISwitch`, setOn with `ccBotManager.isOpen`:
-```swift
-@IBOutlet weak var ccBotSwitch: UISwitch!
+    ```swift
+    @IBOutlet weak var ccBotSwitch: UISwitch!
 
-ccBotSwitch.setOn(ccBotManager.isOpen, animated: true)
+    ccBotSwitch.setOn(ccBotManager.isOpen, animated: true)
 
-@IBAction func test(_ sender: UISwitch) {
-    
-  if sender.isOn {
-    ccBotManager.isOpen = true
-  } else {
-    ccBotManager.isOpen = false
-  }
-}
-```
+    @IBAction func test(_ sender: UISwitch) {
+        
+      if sender.isOn {
+        ccBotManager.isOpen = true
+      } else {
+        ccBotManager.isOpen = false
+      }
+    }
+    ```
 
 ### Delegate
 
 - Skip this step if already assigned at beginning:
-```swift
-ccBotManager.delegate = self
+    ```swift
+    ccBotManager.delegate = self
 
-```
+    ```
 - Confirm protocol of delegates :
-```swift
-extension ViewController: CCBotNewsDelegate {
-    
-    func showNextNews(categaryID: Int, storyID: Int) {
-        print("categaryID: \(categaryID)\nstoryID: \(storyID)")
+    ```swift
+    extension ViewController: CCBotNewsDelegate {
+        
+        func showNextNews(categaryID: Int, storyID: Int) {
+            print("categaryID: \(categaryID)\nstoryID: \(storyID)")
+        }
     }
-}
 
-extension ViewController: CCBotTravelDelegate {
-    
-    func showNextTour(categaryID: Int, storyID: Int) {
-        print("categaryID: \(categaryID)\nstoryID: \(storyID)")
+    extension ViewController: CCBotTravelDelegate {
+        
+        func showNextTour(categaryID: Int, storyID: Int) {
+            print("categaryID: \(categaryID)\nstoryID: \(storyID)")
+        }
     }
-}
-```
 
 
 ## Release
