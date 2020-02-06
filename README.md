@@ -34,6 +34,7 @@ In your ViewController, create your global `ccBotManager`.
 `superViewController`: SuperView for ChatBot Button.
 `button`: ChatBot Button on the Screen.
 `ccBotCategory`: Project Category.
+`environment`: Choose `test` or `release`
 `isOpen`: ChatBot Button control with `UISwitch`, default is `true`.
 `delegate`: Delegate of `CCBotViewController`, default is `nil`.
 ```swift
@@ -51,6 +52,7 @@ class ViewController: UIViewController {
     ccBotManager.setting(superViewController: self,
                          button: ccBotButton,
                          ccBotCategory: .utravel,
+                         environment: CCBotEnvironment,
                          isOpen: Bool = true,
                          delegate: self)
   }
@@ -85,7 +87,7 @@ Skip this step if already assigned at beginning:
 ccBotManager.delegate = self
 
 ```
-Confirm protocol of Delegate :
+Confirm protocol of delegates :
 ```swift
 extension ViewController: CCBotNewsDelegate {
     

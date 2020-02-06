@@ -18,7 +18,7 @@ public class CCBotManager {
     ///   - superViewController: SuperView for ChatBot Button
     ///   - button: ChatBot Button on the Screen
     ///   - ccBotCategory: Project Category
-    ///   - environment: `test` or `release`
+    ///   - environment: Choose `test` or `release`
     ///   - isActive: ChatBot Button control with `UISwitch`, default is `true`
     ///   - delegate: Delegate of `CCBotViewController`, default is `nil`
     public func setting(superViewController: UIViewController,
