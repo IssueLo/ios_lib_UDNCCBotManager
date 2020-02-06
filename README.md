@@ -21,7 +21,8 @@
 
 
 ## Set Up
-### In your ViewController, create your global `ccBotManager`.
+In your ViewController, create your global CCBotManager.
+Setting with parameters as below:
 - `superViewController`: SuperView for ChatBot Button.
 - `button`: ChatBot Button on the Screen.
 - `ccBotCategory`: Project Category.
