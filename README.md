@@ -21,7 +21,7 @@
 
 
 ## Set Up
-- In your ViewController, create your global `ccBotManager`.
+### In your ViewController, create your global `ccBotManager`.
 - `superViewController`: SuperView for ChatBot Button.
 - `button`: ChatBot Button on the Screen.
 - `ccBotCategory`: Project Category.
@@ -43,8 +43,8 @@
         ccBotManager.setting(superViewController: self,
                              button: ccBotButton,
                              ccBotCategory: .utravel,
-                             environment: CCBotEnvironment,
-                             isActive: Bool = true,
+                             environment: .release,
+                             isActive: true,
                              delegate: self)
       }
     }
@@ -62,10 +62,10 @@
 
     @IBAction func test(_ sender: UISwitch) {
         
-      if sender.isOn {
-        ccBotManager.isOpen = true
+      if sender.isActive {
+        ccBotManager.isActive = true
       } else {
-        ccBotManager.isOpen = false
+        ccBotManager.isActive = false
       }
     }
     ```
