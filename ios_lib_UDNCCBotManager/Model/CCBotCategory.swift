@@ -14,6 +14,7 @@ public enum CCBotCategory {
     case utravel
     
     private var model: CCBotCategoryModel {
+        
         switch self {
         case .udnNews: return CCBotCategoryModel(category: "udn", image: "chatbot_head")
         case .utravel: return CCBotCategoryModel(category: "utravel", image: "chatbot_head")
@@ -21,21 +22,13 @@ public enum CCBotCategory {
     }
     
     var url: String {
-        CCBotModel.getURL(with: self.model.category)
+        
+        guard let environment = CCBotManager.shared.environment else { return "" }
+        return CCBotModel.getURL(with: self.model.category, for: environment)
     }
     
     var iconImage: UIImage? {
+        
         UIImage(named: self.model.image, in: CCBotModel.imageBundle, compatibleWith: nil)
-    }
-}
-
-struct CCBotCategoryModel {
-    
-    let category: String
-    let image: String
-    
-    init(category: String, image: String) {
-        self.category = category
-        self.image = image
     }
 }

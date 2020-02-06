@@ -18,20 +18,24 @@ public class CCBotManager {
     ///   - superViewController: SuperView for ChatBot Button
     ///   - button: ChatBot Button on the Screen
     ///   - ccBotCategory: Project Category
-    ///   - isOpen: ChatBot Button control with `UISwitch`, default is `true`
+    ///   - environment: `test` or `release`
+    ///   - isActive: ChatBot Button control with `UISwitch`, default is `true`
     ///   - delegate: Delegate of `CCBotViewController`, default is `nil`
     public func setting(superViewController: UIViewController,
                         button: UIButton,
                         ccBotCategory: CCBotCategory,
-                        isOpen: Bool = true,
+                        environment: CCBotEnvironment,
+                        isActive: Bool = true,
                         delegate: AnyObject? = nil) {
         
         self.superViewController = superViewController
         self.ccBotButton = button
         self.ccBotCategory = ccBotCategory
-        self.isOpen = isOpen
+        self.environment = environment
+        ccBotSetting(with: ccBotCategory, for: environment)
+
+        self.isActive = isActive
         self.delegate = delegate
-        ccBotButton.addTarget(self, action: #selector(presentCCBotVC), for: .touchUpInside)
     }
     
     // MARK: Main Properties
@@ -41,14 +45,12 @@ public class CCBotManager {
             ccBotButton.addTarget(self, action: #selector(presentCCBotVC), for: .touchUpInside)
         }
     }
-    public var ccBotCategory: CCBotCategory! {
+    public var ccBotCategory: CCBotCategory!
+    public var environment: CCBotEnvironment!
+    
+    public var isActive: Bool! {
         didSet {
-            ccBotSetting(with: ccBotCategory)
-        }
-    }
-    public var isOpen: Bool! {
-        didSet {
-            if isOpen {
+            if isActive {
                 ccBotButton.isHidden = false
             } else {
                 ccBotButton.isHidden = true
@@ -83,24 +85,6 @@ public class CCBotManager {
     }
     
     // MARK: Method
-    /// Set CCBotViewController `WebViewURL` and CCBotButton `UIImage`
-    private func ccBotSetting(with category: CCBotCategory) {
-        
-        ccBotButton.setImage(category.iconImage, for: .normal)
-        ccBotViewController.url = category.url
-    }
-    
-    /// Set CCBotButton `AutoLayout`
-    private func ccBotBtnLayout(on superViewController: UIViewController) {
-                
-        superViewController.view.addSubview(ccBotButton)
-        ccBotButton.anchor(top: nil,
-                           leading: nil,
-                           bottom: superViewController.ft_safeAreaLayoutGuide.bottomAnchor,
-                           trailing: superViewController.view.trailingAnchor,
-                           padding: UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0))
-    }
-    
     /// `ChatBot Button Target` - Present CCBotViewController, Animation of CoverView
     @objc
     private func presentCCBotVC() {
@@ -120,5 +104,12 @@ public class CCBotManager {
         
         ccBotViewController.modalPresentationStyle = .overCurrentContext
         superViewController.present(ccBotViewController, animated: true, completion: nil)
+    }
+    
+    /// Set CCBotViewController `WebViewURL` and CCBotButton `UIImage`
+    private func ccBotSetting(with category: CCBotCategory, for environment: CCBotEnvironment) {
+        
+        ccBotButton.setImage(category.iconImage, for: .normal)
+        ccBotViewController.url = category.url
     }
 }

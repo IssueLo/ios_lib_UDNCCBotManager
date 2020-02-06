@@ -8,8 +8,14 @@
 
 struct CCBotModel {
     
-    static func getURL(with category: String) -> String {
-        let urlPath = "https:ccbot-testfront.udn-device-dept.net/#/"
+    static func getURL(with category: String, for environment: CCBotEnvironment) -> String {
+        var urlPath: String!
+        switch environment {
+        case .test:
+            urlPath = "https:ccbot-testfront.udn-device-dept.net/#/"
+        case .release:
+            urlPath = "https:ccbot/#/"
+        }
         let platform = "?app=true"
         let url = urlPath + category + platform
         return url
