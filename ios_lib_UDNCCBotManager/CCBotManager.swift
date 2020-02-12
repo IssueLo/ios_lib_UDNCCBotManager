@@ -10,7 +10,7 @@ import UIKit
 
 public class CCBotManager {
     
-    /// `Singleton Plus`
+    // MARK: - Singleton Plus
     public static let shared = CCBotManager()
     
     /// setting `CCBotManager`
@@ -34,11 +34,12 @@ public class CCBotManager {
         self.environment = environment
         ccBotSetting(with: ccBotCategory, for: environment)
 
+        // Optional
         self.isActive = isActive
         self.delegate = delegate
     }
     
-    // MARK: Main Properties
+    // MARK: - Main Properties
     public var superViewController: UIViewController!
     public var ccBotButton: UIButton! {
         didSet {
@@ -67,9 +68,9 @@ public class CCBotManager {
         }
     }
 
-    // MARK: Other Properties
+    // MARK: - Other Properties
     /// - Parameters:
-    ///   - ccBotViewController: ViewController for WebView, default is `CCBotViewController()`
+    ///   - ccBotViewController: ViewController for WebView
     ///   - coverView: Create animation when present ChatBotView
     private let ccBotViewController: CCBotViewController = CCBotViewController()
     private let coverView: UIView = UIView()
@@ -84,7 +85,7 @@ public class CCBotManager {
         }
     }
     
-    // MARK: Method
+    // MARK: - Method
     /// `ChatBot Button Target` - Present CCBotViewController, Animation of CoverView
     @objc
     private func presentCCBotVC() {

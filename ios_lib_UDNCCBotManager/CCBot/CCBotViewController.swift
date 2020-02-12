@@ -21,7 +21,7 @@ public protocol CCBotTravelDelegate: AnyObject {
 
 class CCBotViewController: UIViewController {
     
-    // MARK: Properties
+    // MARK: - Properties
     /// - Parameters:
     ///   - webView: `WKWebView`
     ///   - webViewConfig: For receiving messages from JavaScript
@@ -36,7 +36,7 @@ class CCBotViewController: UIViewController {
     weak var newsDelegate: CCBotNewsDelegate?
     weak var travelDelegate: CCBotTravelDelegate?
     
-    // MARK: Life Cycle
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -52,7 +52,7 @@ class CCBotViewController: UIViewController {
         webView.roundCorners(corners: [.topLeft, .topRight], radius: 8)
     }
     
-    // MARK: Method
+    // MARK: - Method
     /// Set WebViewConfig with `CCBotWKScriptName` for receiving messages from JavaScript
     private func setWebViewConfig() {
 
