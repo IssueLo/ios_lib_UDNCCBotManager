@@ -6,6 +6,12 @@
 //  Copyright © 2020 羅翊修. All rights reserved.
 //
 
+public enum CCBotEnvironment {
+    
+    case test
+    case release
+}
+
 struct CCBotModel {
     
     static func getURL(with category: String, for environment: CCBotEnvironment) -> String {

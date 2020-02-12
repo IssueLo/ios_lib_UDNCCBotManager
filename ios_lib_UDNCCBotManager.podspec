@@ -9,7 +9,7 @@ s.summary = "ChatBot Module for udnNews"
 s.requires_arc = true
 
 # 2
-s.version = "0.1.4"
+s.version = "0.2.0"
 
 # 3
 # s.license = { :type => "MIT", :file => "LICENSE" }
@@ -30,8 +30,16 @@ s.framework = "UIKit", "WebKit"
 # 8
 s.source_files = "ios_lib_UDNCCBotManager/*.swift"
 
-    s.subspec 'Model' do |m|
-        m.source_files = "ios_lib_UDNCCBotManager/Model/*.swift"
+    s.subspec 'CCBot' do |c|
+        c.source_files = "ios_lib_UDNCCBotManager/CCBot/*.swift"
+    end
+    
+    s.subspec 'Manager' do |m|
+        m.source_files = "ios_lib_UDNCCBotManager/Manager/*.swift"
+    end
+
+    s.subspec 'News' do |n|
+        n.source_files = "ios_lib_UDNCCBotManager/News/*.swift"
     end
 
     s.subspec 'Extension' do |e|

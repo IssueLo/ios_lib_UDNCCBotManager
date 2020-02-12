@@ -11,12 +11,11 @@ import WebKit
 
 public protocol CCBotNewsDelegate: AnyObject {
     
-    func showNextNews(categaryID: Int, storyID: Int)
+    func showNextNews(categaryID: Int, articleId: Int)
 }
 
 public protocol CCBotTravelDelegate: AnyObject {
     
-    func showNextTour(categaryID: Int, storyID: Int)
 }
 
 class CCBotViewController: UIViewController {
@@ -57,6 +56,8 @@ class CCBotViewController: UIViewController {
     private func setWebViewConfig() {
 
         webViewConfig.userContentController = WKUserContentController()
+        
+        // Define WKScriptName
         webViewConfig.userContentController.add(self, name: CCBotModel.WKScriptName.close)
     }
     
@@ -86,11 +87,28 @@ extension CCBotViewController: WKScriptMessageHandler {
         let messageString = message.body as! String
         
         if messageString == "" {
-            dismissHandler?()
-            self.dismiss(animated: true, completion: nil)
-            // TODO - 
-            newsDelegate?.showNextNews(categaryID: 123, storyID: 456)
-            travelDelegate?.showNextTour(categaryID: 444, storyID: 555)
+            closed()
+        } else {
+            closed()
+            if let data = messageString.data(using: .utf8) {
+                showNextNew(with: data)
+            }
+        }
+    }
+    
+    private func closed() {
+        dismissHandler?()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    // undNews
+    private func showNextNew(with data: Data) {
+        if let newsModel = DecoderManager.toNewsModel(data: data) {
+            newsDelegate?.showNextNews(categaryID: newsModel.categoryId,
+                                       articleId: newsModel.articleId)
+        } else {
+            // - TODO
+            print("newsModel is nil")
         }
     }
 }

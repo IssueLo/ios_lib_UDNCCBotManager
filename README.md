@@ -81,17 +81,11 @@ Setting with parameters as below:
     ```swift
     extension ViewController: CCBotNewsDelegate {
         
-        func showNextNews(categaryID: Int, storyID: Int) {
-            print("categaryID: \(categaryID)\nstoryID: \(storyID)")
+        func showNextNews(categaryID: Int, articleId: Int) {
+            print("categaryID: \(categaryID)\narticleId: \(articleId)")
         }
     }
-
-    extension ViewController: CCBotTravelDelegate {
-        
-        func showNextTour(categaryID: Int, storyID: Int) {
-            print("categaryID: \(categaryID)\nstoryID: \(storyID)")
-        }
-    }
+    
     ```
     
 
