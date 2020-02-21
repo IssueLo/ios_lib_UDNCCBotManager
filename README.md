@@ -96,7 +96,12 @@ Setting with parameters as below:
 
 
 ## Release
-1.0.0:
+
+0.3.0:
+- Features: Add CLLoctionManager/ Send Location to Web 
+0.2.0:
+- Features: Two Environment for App
+0.1.0:
 - Deployment Target: iOS 9.0
 - Features: Create ChatBot for App.
 

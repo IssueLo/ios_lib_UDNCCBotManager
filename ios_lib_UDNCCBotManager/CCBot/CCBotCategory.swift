@@ -8,17 +8,6 @@
 
 import UIKit
 
-struct CCBotCategoryModel {
-    
-    let category: String
-    let image: String
-    
-    init(category: String, image: String) {
-        self.category = category
-        self.image = image
-    }
-}
-
 public enum CCBotCategory {
         
     case udnNews
@@ -41,5 +30,16 @@ public enum CCBotCategory {
     var iconImage: UIImage? {
         
         UIImage(named: self.model.image, in: CCBotModel.imageBundle, compatibleWith: nil)
+    }
+    
+    struct CCBotCategoryModel {
+        
+        let category: String
+        let image: String
+        
+        init(category: String, image: String) {
+            self.category = category
+            self.image = image
+        }
     }
 }

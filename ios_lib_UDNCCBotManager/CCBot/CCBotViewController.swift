@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import CoreLocation
 
 public protocol CCBotNewsDelegate: AnyObject {
     
@@ -35,6 +36,9 @@ class CCBotViewController: UIViewController {
     weak var newsDelegate: CCBotNewsDelegate?
     weak var travelDelegate: CCBotTravelDelegate?
     
+    // MARK: - CCLocation
+    let locationManager = CLLocationManager()
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +56,7 @@ class CCBotViewController: UIViewController {
     }
     
     // MARK: - Method
-    /// Set WebViewConfig with `CCBotWKScriptName` for receiving messages from JavaScript
+    /// Setup WebViewConfig with `CCBotWKScriptName` for receiving messages from JavaScript
     private func setWebViewConfig() {
 
         webViewConfig.userContentController = WKUserContentController()
@@ -61,7 +65,7 @@ class CCBotViewController: UIViewController {
         webViewConfig.userContentController.add(self, name: CCBotModel.WKScriptName.close)
     }
     
-    /// Set WebView with  `WKWebViewConfiguration`, `CornerRadius`, `AutoLayout`and `URL`
+    /// Setup WebView with  `WKWebViewConfiguration`, `CornerRadius`, `AutoLayout`and `URL`
     private func setWebView(urlString: String) {
         
         webView = WKWebView(frame: .zero, configuration: webViewConfig)
@@ -78,8 +82,20 @@ class CCBotViewController: UIViewController {
             self.webView.load(URLRequest(url: url))
         }
     }
+    
+    /// Setup Location Manager.
+    private func setLocationManager() {
+        locationManager.delegate = self
+        
+        locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        
+        locationManager.requestWhenInUseAuthorization()
+
+        locationManager.startUpdatingLocation()
+    }
 }
 
+// MARK: - Receive Message from Web
 extension CCBotViewController: WKScriptMessageHandler {
     
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
@@ -110,5 +126,24 @@ extension CCBotViewController: WKScriptMessageHandler {
             // - TODO
             print("newsModel is nil")
         }
+    }
+}
+
+// MARK: - Send Location to Web
+extension CCBotViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        locationManager.stopUpdatingLocation()
+        let coordinate: (Double, Double) = (Double(locations[0].coordinate.latitude),
+                                            Double(locations[0].coordinate.longitude))
+        sendMessageToWeb(with: coordinate)
+    }
+    
+    private func sendMessageToWeb(with message: Any) {
+
+        // - TODO
+        webView.evaluateJavaScript("callJSFromApp('\(message)')")
+        print(message)
     }
 }
