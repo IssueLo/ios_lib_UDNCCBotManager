@@ -45,9 +45,12 @@ class CCBotViewController: UIViewController {
         
         view.backgroundColor = .clear
         setWebViewConfig()
+        
         if let url = url {
             setWebView(urlString: url)
         }
+        
+        setLocationManager()
     }
     
     override func viewDidLayoutSubviews() {
@@ -85,12 +88,10 @@ class CCBotViewController: UIViewController {
     
     /// Setup Location Manager.
     private func setLocationManager() {
+        
         locationManager.delegate = self
-        
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        
         locationManager.requestWhenInUseAuthorization()
-
         locationManager.startUpdatingLocation()
     }
 }
@@ -122,6 +123,7 @@ extension CCBotViewController: WKScriptMessageHandler {
         if let newsModel = DecoderManager.toNewsModel(data: data) {
             newsDelegate?.showNextNews(categaryID: newsModel.categoryId,
                                        articleId: newsModel.articleId)
+            print("showNextNews with \(newsModel.categoryId), \(newsModel.articleId)")
         } else {
             // - TODO
             print("newsModel is nil")
@@ -144,6 +146,6 @@ extension CCBotViewController: CLLocationManagerDelegate {
 
         // - TODO
         webView.evaluateJavaScript("callJSFromApp('\(message)')")
-        print(message)
+        print("sendMessageToWeb: \(message)")
     }
 }
