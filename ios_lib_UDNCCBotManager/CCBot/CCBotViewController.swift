@@ -75,11 +75,11 @@ class CCBotViewController: UIViewController {
         webView.scrollView.bounces = false
         
         view.addSubview(webView)
-        webView.anchor(top: ft_safeAreaLayoutGuide.topAnchor,
-                       leading: view.leadingAnchor,
-                       bottom: view.bottomAnchor,
-                       trailing: view.trailingAnchor,
-                       padding: UIEdgeInsets(top: 40, left: 0, bottom: 0, right: 0))
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.topAnchor.constraint(equalTo: ft_safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
+        webView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        webView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
 
         if let url = URL(string: urlString) {
             self.webView.load(URLRequest(url: url))

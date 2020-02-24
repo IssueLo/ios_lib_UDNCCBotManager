@@ -32,7 +32,8 @@ public class CCBotManager {
         self.ccBotButton = button
         self.ccBotCategory = ccBotCategory
         self.environment = environment
-        ccBotSetting(with: ccBotCategory, for: environment)
+        ccBotViewController.url = CCBotModel.getURL(with: ccBotCategory,
+                                                    for: environment)
 
         // Optional
         self.isActive = isActive
@@ -106,11 +107,5 @@ public class CCBotManager {
         ccBotViewController.modalPresentationStyle = .overCurrentContext
         superViewController.present(ccBotViewController, animated: true, completion: nil)
     }
-    
-    /// Set CCBotViewController `WebViewURL` and CCBotButton `UIImage`
-    private func ccBotSetting(with category: CCBotCategory, for environment: CCBotEnvironment) {
-        
-        ccBotButton.setImage(category.iconImage, for: .normal)
-        ccBotViewController.url = category.url
-    }
+
 }

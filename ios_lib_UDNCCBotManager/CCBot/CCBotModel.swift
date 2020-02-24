@@ -10,29 +10,35 @@ public enum CCBotEnvironment {
     
     case test
     case release
+    
+    var urlPath: String {
+        
+        switch self {
+        case .test: return "https:ccbot-testfront.udn-device-dept.net/#/"
+        case .release: return "https:ccbot/#/"
+        }
+    }
 }
 
 struct CCBotModel {
     
-    static func getURL(with category: String, for environment: CCBotEnvironment) -> String {
-        var urlPath: String!
-        switch environment {
-        case .test:
-            urlPath = "https:ccbot-testfront.udn-device-dept.net/#/"
-        case .release:
-            urlPath = "https:ccbot/#/"
-        }
+    static func getURL(with category: CCBotCategory,
+                       for environment: CCBotEnvironment) -> String {
+        let categoryURLPath = category.urlPath
+        let environmentURLPath = environment.urlPath
         let platform = "?app=true"
-        let url = urlPath + category + platform
+        let url = environmentURLPath + categoryURLPath + platform
         return url
-    }
-    
-    static var imageBundle: Bundle {
-        let path = Bundle(for: CCBotManager.self).resourcePath! + "/CCBotManager.bundle"
-        return Bundle(path: path)!
     }
     
     struct WKScriptName {
         static let close = "botclosed"
     }
+    
+    /* - icon 由 app 設定
+    static var imageBundle: Bundle {
+        let path = Bundle(for: CCBotManager.self).resourcePath! + "/CCBotManager.bundle"
+        return Bundle(path: path)!
+    }
+     */
 }

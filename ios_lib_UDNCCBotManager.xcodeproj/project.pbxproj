@@ -11,7 +11,6 @@
 		4047570423F3A9CC004E371B /* DecoderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4047570323F3A9CC004E371B /* DecoderManager.swift */; };
 		4051650023E7FA32009714CA /* UIViewController+SafeAreaLayoutGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405164FF23E7FA32009714CA /* UIViewController+SafeAreaLayoutGuide.swift */; };
 		4084AB4223D6EB660013F2D0 /* ios_lib_UDNCCBotManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4084AB4023D6EB660013F2D0 /* ios_lib_UDNCCBotManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4084AB4B23D6EC660013F2D0 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4084AB4923D6EC660013F2D0 /* UIView+AutoLayout.swift */; };
 		4084AB4C23D6EC660013F2D0 /* UIView+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4084AB4A23D6EC660013F2D0 /* UIView+CornerRadius.swift */; };
 		4084AB5323D6EC750013F2D0 /* CCBotManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4084AB4E23D6EC750013F2D0 /* CCBotManager.swift */; };
 		4084AB5423D6EC750013F2D0 /* CCBotCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4084AB5023D6EC750013F2D0 /* CCBotCategory.swift */; };
@@ -29,7 +28,6 @@
 		4084AB3D23D6EB660013F2D0 /* ios_lib_UDNCCBotManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ios_lib_UDNCCBotManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4084AB4023D6EB660013F2D0 /* ios_lib_UDNCCBotManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ios_lib_UDNCCBotManager.h; sourceTree = "<group>"; };
 		4084AB4123D6EB660013F2D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4084AB4923D6EC660013F2D0 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		4084AB4A23D6EC660013F2D0 /* UIView+CornerRadius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+CornerRadius.swift"; sourceTree = "<group>"; };
 		4084AB4E23D6EC750013F2D0 /* CCBotManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCBotManager.swift; sourceTree = "<group>"; };
 		4084AB5023D6EC750013F2D0 /* CCBotCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCBotCategory.swift; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 		4084AB4823D6EC660013F2D0 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				4084AB4923D6EC660013F2D0 /* UIView+AutoLayout.swift */,
 				4084AB4A23D6EC660013F2D0 /* UIView+CornerRadius.swift */,
 				405164FF23E7FA32009714CA /* UIViewController+SafeAreaLayoutGuide.swift */,
 			);
@@ -203,7 +200,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4084AB5523D6EC750013F2D0 /* CCBotViewController.swift in Sources */,
-				4084AB4B23D6EC660013F2D0 /* UIView+AutoLayout.swift in Sources */,
 				4084AB4C23D6EC660013F2D0 /* UIView+CornerRadius.swift in Sources */,
 				4051650023E7FA32009714CA /* UIViewController+SafeAreaLayoutGuide.swift in Sources */,
 				4047570223F3A9A7004E371B /* NewsModel.swift in Sources */,

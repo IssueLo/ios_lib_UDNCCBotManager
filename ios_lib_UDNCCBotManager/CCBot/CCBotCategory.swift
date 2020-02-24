@@ -13,33 +13,18 @@ public enum CCBotCategory {
     case udnNews
     case utravel
     
-    private var model: CCBotCategoryModel {
+    var urlPath: String {
         
         switch self {
-        case .udnNews: return CCBotCategoryModel(category: "udn", image: "chatbot_head")
-        case .utravel: return CCBotCategoryModel(category: "utravel", image: "chatbot_head")
+        case .udnNews: return "udn"
+        case .utravel: return "utravel"
         }
     }
     
-    var url: String {
-        
-        guard let environment = CCBotManager.shared.environment else { return "" }
-        return CCBotModel.getURL(with: self.model.category, for: environment)
-    }
-    
+    /* - icon 由 app 設定
     var iconImage: UIImage? {
         
         UIImage(named: self.model.image, in: CCBotModel.imageBundle, compatibleWith: nil)
     }
-    
-    struct CCBotCategoryModel {
-        
-        let category: String
-        let image: String
-        
-        init(category: String, image: String) {
-            self.category = category
-            self.image = image
-        }
-    }
+     */
 }
